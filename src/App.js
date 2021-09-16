@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
+import { Component } from "react";
+import "./App.css";
+import AuthPage from "./pages/AuthPage/AuthPage";
+// import FoodSearchForm from "./components/FoodSearchForm";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    user: null,
+  };
+
+  setUserInState = () => {
+    return;
+  };
+
+  render() {
+    return (
+      <main className="App">
+        {this.state.user ? (
+          <></>
+        ) : (
+          // <Switch>
+          //   {/* <Route
+          //     path="/foods/search"
+          //     render={}
+          //   /> */}
+          //   <Route
+          //     path="/foods"
+          //     render={(props) => (
+          //       <NewOrderPage {...props} logout={this.logout} />
+          //     )}
+          //   />
+          //   {/* and in case nothing matches, we redirect: */}
+          //   <Redirect to="/orders" />
+          // </Switch>
+          <AuthPage setUserInState={this.setUserInState} />
+        )}
+      </main>
+    );
+  }
 }
 
 export default App;
